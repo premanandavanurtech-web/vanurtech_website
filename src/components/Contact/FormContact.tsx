@@ -8,6 +8,7 @@ import { contactApi, ContactFormData } from '@/api';
 export default function FormContact() {
   const [formData, setFormData] = useState({
     name: '',
+    phone:'',
     email: '',
     company: '',
     message: '',
@@ -44,6 +45,7 @@ export default function FormContact() {
     try {
       const contactData: ContactFormData = {
         name: formData.name,
+        phone:formData.phone,
         email: formData.email,
         company: formData.company || undefined,
         services: formData.interests,
@@ -57,6 +59,7 @@ export default function FormContact() {
         // Reset form
         setFormData({
           name: '',
+          phone:'',
           email: '',
           company: '',
           message: '',
@@ -117,6 +120,19 @@ export default function FormContact() {
               </div>
               <div>
                 <label className="block text-white text-sm mb-3 font-medium">
+                  Phone <span className="text-purple-500">*</span>
+                </label>
+                <input
+                  type="phone"
+                  placeholder="Where can we reply?"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  required
+                  className="w-full bg-transparent border-b-2 border-gray-700 text-white placeholder-gray-500 py-3 focus:border-purple-500 focus:outline-none transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-white text-sm mb-3 font-medium">
                   Email <span className="text-purple-500">*</span>
                 </label>
                 <input
@@ -124,7 +140,7 @@ export default function FormContact() {
                   placeholder="Where can we reply?"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  required
+                  
                   className="w-full bg-transparent border-b-2 border-gray-700 text-white placeholder-gray-500 py-3 focus:border-purple-500 focus:outline-none transition-colors"
                 />
               </div>

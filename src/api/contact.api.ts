@@ -4,6 +4,7 @@ import axiosInstance from './axios.config';
 export interface ContactFormData {
   name: string;
   email: string;
+  phone: string;
   company?: string;
   services: string[];
   message: string;
@@ -17,6 +18,7 @@ export interface ContactResponse {
   result: {
     name: string;
     email: string;
+    phone:string;
     company?: string;
     services: string[];
     message: string;
